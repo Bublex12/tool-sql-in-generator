@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL IN Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Teko:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a id="hub-link" class="nav-back label" href="#">← Все инструменты</a>
+      <p class="body secondary site-header__tag">sql · in (...)</p>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title" class="display">SQL IN</h1>
+        <p class="hero__lead">
+          Вставьте список через запятую или с новой строки — получите готовое
+          условие <code class="inline-code">IN (...)</code>.
+        </p>
+      </section>
+
+      <section class="tool" aria-labelledby="input-title">
+        <h2 id="input-title" class="h1">Список</h2>
+
+        <label class="field">
+          <span class="label">значения</span>
+          <textarea
+            id="input-list"
+            class="field__input"
+            rows="5"
+            placeholder="1,2,3,4,5"
+            spellcheck="false"
+          >1,2,3,4,5</textarea>
+        </label>
+
+        <label class="option">
+          <input id="quote-strings" type="checkbox" checked />
+          <span class="body">Всегда в одинарных кавычках</span>
+        </label>
+
+        <label class="field">
+          <span class="label">результат</span>
+          <textarea
+            id="output-sql"
+            class="field__input field__input--mono"
+            rows="3"
+            readonly
+            aria-readonly="true"
+          ></textarea>
+        </label>
+
+        <div class="tool__actions">
+          <button id="copy-btn" class="button-primary" type="button">
+            Копировать
+          </button>
+          <span id="copy-status" class="body secondary tool__status"></span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="body secondary">Обработка в браузере</p>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
