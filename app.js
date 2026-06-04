@@ -15,10 +15,26 @@ const copyBtn = document.getElementById("copy-btn");
 const statusEl = document.getElementById("copy-status");
 
 function parseList(raw) {
-  return raw
-    .split(/[\n,;]+/)
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const text = raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
+  if (!text) return [];
+
+  // Каждое значение с новой строки (копипаст из Excel, столбца)
+  if (text.includes("\n")) {
+    return text
+      .split("\n")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  if (/[,;]/.test(text)) {
+    return text
+      .split(/[,;]+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  // Одна строка — через пробел или таб
+  return text.split(/\s+/).filter(Boolean);
 }
 
 function escapeSqlString(value) {
