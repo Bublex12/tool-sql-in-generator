@@ -19,20 +19,31 @@
         <img class="site-icon" src="icon.svg" width="20" height="20" alt="" />
         <a id="hub-link" class="nav-back label" href="#">← Все инструменты</a>
       </div>
-      <p class="body secondary site-header__tag">sql · in (...)</p>
+      <p class="body secondary site-header__tag" id="value-count"></p>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <h1 id="hero-title" class="display">SQL IN</h1>
         <p class="hero__lead">
-          Вставьте список: с новой строки (столбец из Excel), через запятую или
-          пробел — получите <code class="inline-code">IN (...)</code>.
+          Список из Excel, через запятую или пробел → готовый
+          <code class="inline-code">IN (...)</code> или
+          <code class="inline-code">NOT IN (...)</code>.
         </p>
       </section>
 
       <section class="tool" aria-labelledby="input-title">
-        <h2 id="input-title" class="h1">Список</h2>
+        <div class="tool__toolbar">
+          <h2 id="input-title" class="h1 tool__title">Список</h2>
+          <div class="tool__toolbar-actions">
+            <button id="paste-btn" class="button-secondary" type="button">
+              Вставить
+            </button>
+            <button id="clear-btn" class="button-ghost" type="button">
+              Очистить
+            </button>
+          </div>
+        </div>
 
         <label class="field">
           <span class="label">значения</span>
@@ -40,39 +51,59 @@
             id="input-list"
             class="field__input"
             rows="10"
-            placeholder="302784745&#10;302784747&#10;или 1,2,3"
+            placeholder="302784745&#10;302784747&#10;или 1, 2, 3"
             spellcheck="false"
           ></textarea>
         </label>
 
-        <label class="option">
-          <input id="quote-strings" type="checkbox" checked />
-          <span class="body">Всегда в одинарных кавычках</span>
-        </label>
+        <div class="options-grid">
+          <label class="option">
+            <input id="quote-strings" type="checkbox" checked />
+            <span class="body">В кавычках</span>
+          </label>
+          <label class="option">
+            <input id="dedupe-values" type="checkbox" />
+            <span class="body">Убрать дубли</span>
+          </label>
+          <label class="option">
+            <input id="sort-values" type="checkbox" />
+            <span class="body">Сортировать</span>
+          </label>
+          <label class="option">
+            <input id="not-in" type="checkbox" />
+            <span class="body">NOT IN</span>
+          </label>
+        </div>
 
         <label class="field">
-          <span class="label">результат</span>
+          <span class="label">результат · клик = выделить всё</span>
           <textarea
             id="output-sql"
-            class="field__input field__input--mono"
-            rows="3"
+            class="field__input field__input--mono field__input--output"
+            rows="4"
             readonly
             aria-readonly="true"
           ></textarea>
         </label>
 
         <div class="tool__actions">
-          <button id="copy-btn" class="button-primary" type="button">
+          <button id="copy-btn" class="button-primary" type="button" disabled>
             Копировать
           </button>
           <span id="copy-status" class="body secondary tool__status"></span>
         </div>
+
+        <p class="hints body secondary">
+          <kbd>Ctrl</kbd>+<kbd>Enter</kbd> — копировать · строка, запятая или пробел
+        </p>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p class="body secondary">Обработка в браузере</p>
+      <p class="body secondary">Обработка в браузере — данные не отправляются</p>
     </footer>
+
+    <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
 
     <script src="config.js"></script>
     <script src="app.js"></script>

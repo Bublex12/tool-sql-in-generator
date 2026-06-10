@@ -172,12 +172,105 @@ main {
   border-color: var(--color-primary);
 }
 
+.tool__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.tool__title {
+  margin-bottom: 0;
+}
+
+.tool__toolbar-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
 .option {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
   cursor: pointer;
+}
+
+.field__input--output {
+  cursor: pointer;
+}
+
+.field__input--output:focus {
+  border-color: var(--color-tertiary);
+}
+
+.button-secondary,
+.button-ghost {
+  padding: 10px 16px;
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--rounded-md);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.button-secondary {
+  color: var(--color-primary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+}
+
+.button-secondary:hover {
+  border-color: var(--color-tertiary);
+}
+
+.button-ghost {
+  color: var(--color-secondary);
+  background: transparent;
+  border: none;
+}
+
+.button-ghost:hover {
+  color: var(--color-primary);
+}
+
+.hints {
+  margin: var(--space-md) 0 0;
+  font-size: 0.85rem;
+}
+
+.hints kbd {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--rounded-sm);
+  background-color: var(--color-surface);
+}
+
+.toast {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  margin: 0;
+  padding: 12px 18px;
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  color: var(--color-on-primary);
+  background-color: var(--color-tertiary);
+  border-radius: var(--rounded-md);
+  box-shadow: var(--shadow-md);
+  z-index: 100;
 }
 
 .option input {
